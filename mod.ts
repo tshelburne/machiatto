@@ -1,4 +1,4 @@
-import type { Runnable } from "./types.d.ts";
+import type { Runnable, Test } from "./types.d.ts";
 import { Suite } from "./suite.ts";
 
 const root = new Suite();

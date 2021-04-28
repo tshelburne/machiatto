@@ -1,4 +1,4 @@
-import type { Context, Label, Runnable } from "./types.d.ts";
+import type { Context, Label, Runnable, Test } from "./types.d.ts";
 
 export class Suite {
   private pre: Runnable[] = [];

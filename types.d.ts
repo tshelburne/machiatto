@@ -1,4 +1,4 @@
-type Label = string;
-type Context = { [k: string]: any };
-type Runnable = (ctx: Context) => void | Promise<void>;
-type Test = { label: Label; run: Runnable };
+export type Label = string;
+export type Context = { [k: string]: any };
+export type Runnable = (ctx: Context) => void | Promise<void>;
+export type Test = { label: Label; run: Runnable };
