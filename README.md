@@ -1,6 +1,7 @@
 # machiatto
 
-This module provides a Mocha-like interface with support for full async functions across the board. Hopefully it *just works*.
+This module provides a Mocha-like interface with support for full async
+functions across the board. Hopefully it _just works_.
 
 ## Pending work
 
@@ -18,7 +19,8 @@ Module is in prelim state - YMMV.
 
 It's mostly just like Mocha.
 
-Run / name your tests just as you would with `deno test`, as this uses `Deno.test` under the hood.
+Run / name your tests just as you would with `deno test`, as this uses
+`Deno.test` under the hood.
 
 The module provides the following exports:
 
@@ -30,35 +32,33 @@ The module provides the following exports:
 - `afterEach` runs after each test in the suite
 - `run` actually executes the tests
 
-All functions passed can be async and will be executed in defined order, with the exception of tests - tests are run in parallel.
+All functions passed can be async and will be executed in defined order, with
+the exception of tests - tests are run in parallel.
 
 ```ts
 export { expect } from "https://deno.land/x/expect@v0.2.6/mod.ts";
 import { beforeEach, describe, it, run } from "../test.ts";
-import { clone } from './date.ts'
+import { clone } from "./date.ts";
 
-describe('date.ts', function() {
-    
-    beforeEach(function() {
-        this.date = new Date('04/09/2021')
-    })
+describe("date.ts", function () {
+  beforeEach(function () {
+    this.date = new Date("04/09/2021");
+  });
 
-    describe('#clone', function() {
+  describe("#clone", function () {
+    beforeEach(function () {
+      this.cloned = clone(this.date);
+    });
 
-        beforeEach(function() {
-            this.cloned = clone(this.date)
-        })
+    it("returns a date from the exact same time", function () {
+      expect(this.date.getTime()).toEqual(this.cloned.getTime());
+    });
 
-        it('returns a date from the exact same time', function() {
-            expect(this.date.getTime()).toEqual(this.cloned.getTime())
-        })
+    it("returns a different date object", function () {
+      expect(this.date).not.toBe(this.cloned);
+    });
+  });
+});
 
-        it('returns a different date object', function() {
-            expect(this.date).not.toBe(this.cloned)
-        })
-    })
-
-})
-
-await run()
+await run();
 ```
