@@ -40,22 +40,22 @@ export { expect } from "https://deno.land/x/expect@v0.2.6/mod.ts";
 import { beforeEach, describe, it, run } from "../test.ts";
 import { clone } from "./date.ts";
 
-describe("date.ts", function () {
-  beforeEach(function () {
-    this.date = new Date("04/09/2021");
+describe("date.ts", () => {
+  beforeEach((ctx) => {
+    ctx.date = new Date("04/09/2021");
   });
 
-  describe("#clone", function () {
-    beforeEach(function () {
-      this.cloned = clone(this.date);
+  describe("#clone", () => {
+    beforeEach((ctx) => {
+      ctx.cloned = clone(ctx.date);
     });
 
-    it("returns a date from the exact same time", function () {
-      expect(this.date.getTime()).toEqual(this.cloned.getTime());
+    it("returns a date from the exact same time", (ctx) => {
+      expect(ctx.date.getTime()).toEqual(ctx.cloned.getTime());
     });
 
-    it("returns a different date object", function () {
-      expect(this.date).not.toBe(this.cloned);
+    it("returns a different date object", (ctx) => {
+      expect(ctx.date).not.toBe(ctx.cloned);
     });
   });
 });
