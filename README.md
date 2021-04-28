@@ -2,6 +2,14 @@
 
 This module provides a Mocha-like interface with support for full async functions across the board. Hopefully it *just works*.
 
+## Pending work
+
+Module is in prelim state - YMMV.
+
+- unit tests
+- full integration tests
+- full documentation
+
 ## Install
 
 `import * as Machiatto from 'https://deno.land/x/machiatto'`
@@ -9,6 +17,8 @@ This module provides a Mocha-like interface with support for full async function
 ## Usage
 
 It's mostly just like Mocha.
+
+Run / name your tests just as you would with `deno test`, as this uses `Deno.test` under the hood.
 
 The module provides the following exports:
 
